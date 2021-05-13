@@ -13,5 +13,5 @@
     "getSlots": "https://www.keldoc.com/api/patients/v2/timetables/",
     "postAppointments": "https://www.keldoc.com/api/patients/v2/consultations/chained"
   },
-  "comments": "96875/96876 : Moderna < 18yo vaccinodrome Toulouse"
+  "comments": "Motives : 96875/96876 : Moderna > 18yo vaccinodrome Toulouse / 96873/96874 Pfizer Vaccinodrome Toulouse"
 }
