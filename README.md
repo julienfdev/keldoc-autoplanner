@@ -71,6 +71,11 @@ https://www.keldoc.com/cabinet-medical/toulouse-31000/vaccinodrome-toulouse/vacc
 
 L'application est désormais configurée
 
+__NOTA :__
+
+- Les champs from, to, et agendaIds sont valables pour la journée, jusqu'à minuit, ils doivent être changés chaque jour
+- Le token jwt (JsonWebToken) est valide jusqu'à son expiration (exp), il peut être rafraîchi en se reconnectant à KelDoc et en refaisant la manipulation pour le récupérer.
+
 ## Lancement
 
 Dans un terminal à la racine du dossier
