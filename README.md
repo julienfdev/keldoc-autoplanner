@@ -32,6 +32,7 @@ npm install
 ## Préparation
 Afin de fonctionner, l'application a besoin de plusieurs informations à rassembler dans le fichier ./config/config.json
 
+- Renommer le fichier `example.config.json` en `config.json`
 - Renseigner les champs email et password correspondant au compte KelDoc
 - Vérifier les informations du Vaccinodrome (par défaut Toulouse)
 - Lancer une première fois l'application avec `npm start`, l'application propose les choix disponibles dans le vaccinodrome
