@@ -1,0 +1,17 @@
+{
+  "agendaIds": [
+    0
+  ],
+  "from": "2021-mm-dd",
+  "to": "2021-mm-dd",
+  "firstMotiveId": 96875,
+  "secondMotiveId": 96876,
+  "userId": 0,
+  "jwt": "xxx",
+  "nehs": "xxx",
+  "routes": {
+    "getSlots": "https://www.keldoc.com/api/patients/v2/timetables/",
+    "postAppointments": "https://www.keldoc.com/api/patients/v2/consultations/chained"
+  },
+  "comments": "96875/96876 : Moderna < 18yo vaccinodrome Toulouse"
+}

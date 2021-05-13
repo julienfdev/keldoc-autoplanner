@@ -1,0 +1,12 @@
+{
+    "watch": ["**/*"],
+    "ext": "ts",
+    "ignore": ["**/*.spec.ts", "node_modules"],
+    "exec": "ts-node -r tsconfig-paths/register ./index.ts",
+    "events": {
+      "crash": "kill-port 3000",
+      "restart":"kill-port 3000"
+    },
+    "delay": 1000
+  }
+  
