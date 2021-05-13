@@ -84,7 +84,7 @@ const login = async () => {
             isLogged = true;
         }
     } catch (error) {
-        console.error(error)
+        throw error;
     }
 }
 const displayCategories = async () => {
@@ -97,7 +97,7 @@ const displayCategories = async () => {
             console.log(`${motiveCategories[category].name} - CHOIX ${category}`);
         }
     } catch (error) {
-        console.error(error)
+        throw error;
     }
 }
 
@@ -120,39 +120,45 @@ const setDates = () => {
 }
 
 const app = async () => {
-    if (config.email && config.password) {
-        await login();
-    }
-    else {
-        console.log("****");
-        console.log("Veuillez configurer votre email et password dans le fichier config.json");
-        console.log("Puis, relancez l'application");
-        console.log("****");
-        return;
-    }
+    try {
+        console.log("KelDoc Autoplanner - commit 2021-05-13T18:01:47+0200");
+        if (config.email && config.password) {
+            console.log("Logging in with config.json credentials...")
+            await login();
+        }
+        else {
+            console.log("****");
+            console.log("Veuillez configurer votre email et password dans le fichier config.json");
+            console.log("Puis, relancez l'application");
+            console.log("****");
+            return;
+        }
 
-    if (config.motiveCategory < 0) {
-        // We need to fetch the categories and display them in the console before exiting
-        await displayCategories();
-    }
-    else {
-        // We need to get the motive id's and agendaIds
-        await populateMotivesAndAgenda(config.motiveCategory);
-    }
+        if (config.motiveCategory < 0) {
+            // We need to fetch the categories and display them in the console before exiting
+            await displayCategories();
+        }
+        else {
+            // We need to get the motive id's and agendaIds
+            await populateMotivesAndAgenda(config.motiveCategory);
+        }
 
-    // Once logged in, we set the dates
-    setDates()
+        // Once logged in, we set the dates
+        setDates()
 
-    // Every 10sec until we've got a valid answer from KelDoc
-    if (motives[0] && motives[1] && isLogged) {
-        console.log("Configuration OK - Launching main loop");
-        setInterval(() => {
-            if (!appointmentInProgress) {
-                if (!appointmentOk) {
-                    main();
+        // Every 10sec until we've got a valid answer from KelDoc
+        if (motives[0] && motives[1] && isLogged) {
+            console.log("Configuration OK - Launching main loop");
+            setInterval(() => {
+                if (!appointmentInProgress) {
+                    if (!appointmentOk) {
+                        main();
+                    }
                 }
-            }
-        }, 10000)
+            }, 10000)
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
 

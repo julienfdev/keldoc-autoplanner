@@ -32,50 +32,13 @@ npm install
 ## Préparation
 Afin de fonctionner, l'application a besoin de plusieurs informations à rassembler dans le fichier ./config/config.json
 
-- Se conecter à son compte KelDoc
-- Ouvrir la console développeurs du navigateur (F12)
-- Sélectionner l'onglet "Network"
-- Dans le navigateur, page d'accueil de KelDoc, rechercher "Covid" à Toulouse, page suivante, sélectionner le vaccinodrome
-- Effacer les requêtes dans la console pour y voir plus clair (le signe interdit de stationner à côté du point rouge)
-- dans le point 3, catégorie de motif, sélectionner "personnes de +18 ans pour rdv <24h (Pfizer ou Moderna, mais Moderna bien plus dispo!)
-- Au moment du clic, plusieurs requêtes s'affichent
-- Ignorer les requêtes qui commencent par "?sentry_key et cliquer sur la requête qui commence par 5 chiffres, une colonne s'ouvre à droite (ou en bas selon position de la console)
-- en bas des "Requests Headers", il existe une clé `"X-Jwt-Token"`, copier la clé (ey....)
-- aller sur https://jwt.io/ , dans le debugger, et coller le token dans la partie gauche "Encoded", le site décode le payload sous cette forme : 
-```
-{
-  "user_id": 2079074,
-  "device_id": "5d0612736761388a4b1524a769857932",
-  "exp": 1620917251
-}
-```
-- dans la partie payload, vérifier la date du `"exp"` en passant la souris dessus, si le token périme bientôt (< 1h), se déconnecter et reconnecter à KelDoc et refaire la manipulation
-- copier le token encodé (ey...) dans le fichier ./config/config.json dans la clé `"jwt"`
-- copier le user_id dans le fichier config.json dans la clé `"userId"`
-- retourner sur la requête, il existe un header cookie de la forme :
-```
-nehs_consent=eyJzIjpbeyJrIjoiZ2EiLCJhIjoxfSx7ImsiOiJuZWhzIiwiYSI6MX1dfQ==
-```
-- copier la partie droite (ey....) dans le fichier config.json dans la clé `"nehs"`
-- en bas de la requête, dans les Query String Parameters, copier `"from"` et `"to"` dans les clés correspondantes dans le config.json
-- renseigner les `"firstMotiveId"` et `"secondMotiveId"` en fonction des infos du champ `"comments"` du fichier config.json, elles sont par défaut en mode "Moderna"
-- Enfin, la barre d'adresse se présente actuellement sous la forme
-
-```
-https://www.keldoc.com/cabinet-medical/toulouse-31000/vaccinodrome-toulouse/vaccinodrome-toulouse?agenda=53180,...,56241&motive=96875&category=3832&cabinet=18777&specialty=144
-```
-- Dans le fichier config.json, copier dans le tableau `"agendaIds"`, entre les [], toutes les valeurs de `agenda=` jusqu'à `&motive`, si tout va bien, `"agendaIds"` se présente désormais sous la forme
-```
-"agendaIds": [53180, 53xxx, 53xxx, ...]
-```
+- Renseigner les champs email et password correspondant au compte KelDoc
+- Vérifier les informations du Vaccinodrome (par défaut Toulouse)
+- Lancer une première fois l'application avec `npm start`, l'application propose les choix disponibles dans le vaccinodrome
+- Choisir un motiveCategory et l'inscrire dans le config.json
+- Relancer l'application
 
 L'application est désormais configurée
-
-__NOTA :__
-
-- Les champs from, to, et agendaIds sont valables pour la journée, jusqu'à minuit, ils doivent être changés chaque jour
-- Le token jwt (JsonWebToken) est valide jusqu'à son expiration (exp), il peut être rafraîchi en se reconnectant à KelDoc et en refaisant la manipulation pour le récupérer.
-
 ## Lancement
 
 Dans un terminal à la racine du dossier

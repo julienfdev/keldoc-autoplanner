@@ -26,12 +26,13 @@ export default class Keldoc {
             });
             if (response.status === 201) {
                 const object = await response.json();
-
+                console.log("Successfully logged in!")
                 const decodedToken = jwt.decode(object.jwt) as Record<string, any>;
                 loginInfos.jwt = object.jwt;
                 loginInfos.userId = decodedToken.user_id;
             }
             else {
+                console.log("Login error!")
                 throw await response.json()
             }
         } catch (error) {
@@ -63,7 +64,6 @@ export default class Keldoc {
             if (object.availabilities) {
                 return (object.availabilities)
             } else {
-                console.log(object);
                 throw "No slots available for now, skipping"
             }
         }

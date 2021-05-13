@@ -1,8 +1,9 @@
 {
+  "comment":"PLEASE RENAME THIS FILE CONFIG.JSON", 
   "email": "",
   "password": "",
   "motiveCategory": -1,
-  "vaccinodrome":{
+  "vaccinodrome": {
     "id": 2879,
     "specialty": 144,
     "cabinet": 18777
@@ -12,5 +13,12 @@
     "postAppointments": "https://www.keldoc.com/api/patients/v2/consultations/chained",
     "login": "https://www.keldoc.com/api/patients/v2/sessions",
     "getMotiveCategories": "https://www.keldoc.com/api/patients/v2/clinics"
+  },
+  "examples":{
+    "toulouse":{
+      "id": 2879,
+      "specialty": 144,
+      "cabinet": 18777
+    }
   }
 }
