@@ -10,12 +10,14 @@
   "author": "Julien FERAND",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/node-fetch": "^2.5.10",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1"
   }
 }
